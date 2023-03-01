@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			font{font-size: 2em;
+			     font-family: 黑体;
+			}
+		</style>
+	</head>
+	<body>
+	<!--留言板动态展示留言内容与条数-->
+		<font>留言板</font><br />
+			<textarea name="text" id="text" rows="8" cols="30"></textarea>
+		<button name="button" value="message" id="message" >留言</button>
+		<button name="button" value="statistics" id="statistics" onclick="sum()">统计</button>
+		<ul id="ul"></ul>
+		<script>
+			var text=document.getElementById("text");
+			var msg=document.getElementById("message");
+			var ul=document.getElementById("ul");
+			var sta=document.getElementById("statistics");
+			var num=0;
+			msg.onclick=function(){
+				if(text.value==""){
+					alert("留言板里没有内容！");
+					return false;
+				}else{
+					var li=document.createElement("li");
+					li.innerHTML=text.value;
+					/*ul.appendChild(li);*/
+					ul.insertBefore(li,ul.children[0]);
+					num++;
+				}
+				text.value='';
+			}
+			function sum(){
+				alert('共有'+num+'条信息。');
+			}
+		</script>
+	</body>
+</html>
+
+
